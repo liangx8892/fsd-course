@@ -1,16 +1,15 @@
 package com.fsd.sba.model;
 
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+
 @ApiModel(description = "Response Model")
 @JsonInclude(Include.NON_NULL)
-public class HttpResponse {
+public class HttpResponse<T> {
 	public static final int STATUS_OK = 200;
 	public static final int STATUS_BAD_REQUEST = 400;
 	public static final int STATUS_INTERNAL_ERROR = 500;
@@ -24,7 +23,7 @@ public class HttpResponse {
 	private String message;
 
 	@ApiModelProperty(notes = "Response Data", required = true, dataType = "java.lang.Object")
-	private Object data;
+	private T data;
 	
 	public HttpResponse(Integer code) {
 		this(code, null, null);
@@ -34,11 +33,11 @@ public class HttpResponse {
 		this(code, message, null);
 	}
 	
-	public HttpResponse(Integer code, Object data) {
+	public HttpResponse(Integer code, T data) {
 		this(code, null, data);
 	}
 	
-	public HttpResponse(Integer code, String message, Object data) {
+	public HttpResponse(Integer code, String message, T data) {
 		this.code = code;
 		this.message = message;
 		this.data = data;
@@ -66,7 +65,7 @@ public class HttpResponse {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 

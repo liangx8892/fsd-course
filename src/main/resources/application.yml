@@ -11,11 +11,10 @@ spring:
     url: jdbc:mysql://localhost:33060/fsd_course?useSSL=true&useUnicode=true&characterEncoding=utf-8
     username: fsd_course_admin
     password: zaq12wsx
-  jpa:
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: update
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.fsd.sba.entity
 server:
   servlet:
     context-path: /course
@@ -57,11 +56,10 @@ spring:
     url: jdbc:mysql://172.17.0.1:33060/fsd_course?useSSL=true&useUnicode=true&characterEncoding=utf-8
     username: fsd_course_admin
     password: zaq12wsx
-  jpa:
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: update
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.fsd.sba.entity
 server:
   servlet:
     context-path: /course
